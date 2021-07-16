@@ -1,61 +1,41 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: "apps/v1"
+kind: "Deployment"
 metadata:
-  name: {{ include "main.fullname" . }}
+  name: acc-{{ .Values.bank.account }}
   labels:
-    {{- include "main.labels" . | nindent 4 }}
+    app: acc-{{ .Values.bank.account }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
-  {{- end }}
+  replicas: 1
   selector:
     matchLabels:
-      {{- include "main.selectorLabels" . | nindent 6 }}
+      app: acc-{{ .Values.bank.account }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       labels:
-        {{- include "main.selectorLabels" . | nindent 8 }}
+        app: acc-{{ .Values.bank.account }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      serviceAccountName: {{ include "main.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      - name: acc-{{ .Values.bank.account }}
+        image: gcr.io/kob-manager/kob-pandora:staging
+        imagePullPolicy: Always
+        env:
+        - name: bank
+          valueFrom:
+            secretKeyRef:
+              key: bank
+              name: acc-{{ .Values.bank.account }}-config
+        - name: account_no
+          valueFrom:
+            secretKeyRef:
+              key: account_no
+              name: acc-{{ .Values.bank.account }}-config
+        - name: pincode
+          valueFrom:
+            secretKeyRef:
+              key: pincode
+              name: acc-{{ .Values.bank.account }}-config
+        - name: device_id
+          valueFrom:
+            secretKeyRef:
+              key: device_id
+              name: acc-{{ .Values.bank.account }}-config   
