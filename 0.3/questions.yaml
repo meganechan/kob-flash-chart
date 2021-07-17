@@ -3,7 +3,7 @@ questions:
 #config
 - variable: bank.bank
   default: "scb"
-  description: "เลือกธนาคาร"
+  label: "เลือกธนาคาร"
   type: enum
   options:
     - "scb"
@@ -11,17 +11,17 @@ questions:
     - "bbl"
 - variable: bank.account
   default: ""
-  description: "กรอกบัญชีธนาคาร"
+  label: "กรอกบัญชีธนาคาร"
   type: string
 - variable: bank.account
   default: ""
-  description: "กรอกบัญชีธนาคาร"
+  label:  "กรอกบัญชีธนาคาร"
   type: string
 - variable: bank.device_id
   default: ""
-  description: "กรอก device_id"
+  label: "กรอก device_id"
   type: string
 - variable: bank.pincode
   default: ""
-  description: "กรอก pincode"
+  label: "กรอก pincode"
   type: string
