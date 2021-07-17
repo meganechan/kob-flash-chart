@@ -3,16 +3,16 @@ labels:
   io.cattle.role: project # options are cluster/project
   io.rancher.app_min_version: 9.0.2
 questions:
-- variable: cluster.enabled
-  default: true
-  description: "Enable master-slave topology"
-  label: Enable Master-Slave Topology
-  type: boolean
+- variable: bank.bank
+  description: "ธนาคาร"
+  label: ธนาคาร
+  type: enum
+  options:
+    - "scb"
+    - "kbank"
+    - "bbl"
   group: "Redis Master Settings"
   subquestions:
-  - variable: bank.bank
-    label: bank
-    type: string
   - variable: bank.account
     label: account
     type: string
