@@ -1,4 +1,4 @@
-rancher_max_version: 2.3.1
+rancher_max_version: 2.3.99
 questions:
 #config
 - variable: bank.bank
