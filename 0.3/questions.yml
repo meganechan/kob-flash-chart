@@ -4,7 +4,6 @@ labels:
   io.rancher.app_min_version: 9.0.2
 questions:
 - variable: bank.bank
-  default: true
   description: "ธนาคาร"
   label: ธนาคาร
   type: enum
@@ -12,10 +11,10 @@ questions:
     - "scb"
     - "kbank"
     - "bbl"
-  group: "Redis Master Settings"
+  group: "ตั้งค่าบัญชี"
   subquestions:
   - variable: bank.account
-    label: account
+    label: เลขบัญชี
     type: string
   - variable: bank.device_id
     label: device_id
