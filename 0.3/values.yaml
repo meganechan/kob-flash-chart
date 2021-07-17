@@ -19,7 +19,7 @@ service:
   port: 80
 
 bank:
-  account: "default"
+  account: ""
   bank: "scb"
-  device_id: "default"
-  pincode: "default"
+  device_id: ""
+  pincode: ""

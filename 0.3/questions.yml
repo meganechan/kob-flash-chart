@@ -11,10 +11,10 @@ questions:
     - "scb"
     - "kbank"
     - "bbl"
-  group: "Redis Master Settings"
+  group: "ตั้งค่าบัญชี"
   subquestions:
   - variable: bank.account
-    label: account
+    label: เลขบัญชี
     type: string
   - variable: bank.device_id
     label: device_id
