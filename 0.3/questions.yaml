@@ -1,6 +1,6 @@
 rancher_max_version: 2.3.1
 questions:
-#ตั้งค่าบัญชี
+#config
 - variable: bank.bank
   default: "scb"
   description: "เลือกธนาคาร"
