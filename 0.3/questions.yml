@@ -14,9 +14,15 @@ questions:
   show_subquestion_if: true
   group: "Redis Master Settings"
   subquestions:
-  - variable: cluster.slaveCount
-    default: 2
-    required: true
-    description: "Set the Number of Redis followers"
-    type: int
-    label: Number of Redis Followers
+  - variable: bank.bank
+    label: bank
+    type: string
+  - variable: bank.account
+    label: account
+    type: string
+  - variable: bank.device_id
+    label: device_id
+    type: string
+  - variable: bank.pincode
+    label: pincode
+    type: string
