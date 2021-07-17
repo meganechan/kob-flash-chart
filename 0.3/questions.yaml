@@ -2,26 +2,14 @@ rancher_max_version: 2.3.99
 questions:
 #config
 - variable: bank.bank
-  default: "scb"
   label: "เลือกธนาคาร"
-  type: enum
-  options:
-    - "scb"
-    - "kbank"
-    - "bbl"
-- variable: bank.account
-  default: ""
-  label: "กรอกบัญชีธนาคาร"
   type: string
 - variable: bank.account
-  default: ""
   label:  "กรอกบัญชีธนาคาร"
   type: string
 - variable: bank.device_id
-  default: ""
   label: "กรอก device_id"
   type: string
 - variable: bank.pincode
-  default: ""
   label: "กรอก pincode"
   type: string
