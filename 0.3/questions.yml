@@ -2,14 +2,14 @@ rancher_max_version: 2.3.99
 questions:
 #config
 - variable: bank.bank
-  label: เลือกธนาคาร
+  label: bank
   type: string
 - variable: bank.account
-  label: กรอกบัญชีธนาคาร
+  label: account
   type: string
 - variable: bank.device_id
-  label: กรอก device_id
+  label: device_id
   type: string
 - variable: bank.pincode
-  label: กรอก pincode
+  label: pincode
   type: string
