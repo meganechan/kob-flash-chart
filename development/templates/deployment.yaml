@@ -1,0 +1,41 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: acc-{{ .Values.bank.account }}
+  labels:
+    app: acc-{{ .Values.bank.account }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: acc-{{ .Values.bank.account }}
+  template:
+    metadata:
+      labels:
+        app: acc-{{ .Values.bank.account }}
+    spec:
+      containers:
+      - name: acc-{{ .Values.bank.account }}
+        image: gcr.io/kob-manager/kob-pandora:staging
+        imagePullPolicy: Always
+        env:
+        - name: bank
+          valueFrom:
+            secretKeyRef:
+              key: bank
+              name: acc-{{ .Values.bank.account }}-config
+        - name: account_no
+          valueFrom:
+            secretKeyRef:
+              key: account_no
+              name: acc-{{ .Values.bank.account }}-config
+        - name: pincode
+          valueFrom:
+            secretKeyRef:
+              key: pincode
+              name: acc-{{ .Values.bank.account }}-config
+        - name: device_id
+          valueFrom:
+            secretKeyRef:
+              key: device_id
+              name: acc-{{ .Values.bank.account }}-config   
