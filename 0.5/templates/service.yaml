@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: internal-acc-{{ .Values.bank.account }}
+  annotations:
+    networking.gke.io/load-balancer-type: "Internal"  
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 4200
+      protocol: TCP
+      name: http
+  selector:
+    app: acc-{{ .Values.bank.account }}

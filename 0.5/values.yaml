@@ -1,0 +1,25 @@
+# Default values for hello-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: gcr.io/kob-manager/kob-pandora
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "0.5"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: LoadBalancer
+  port: 80
+
+bank:
+  account: ""
+  bank: "scb"
+  device_id: ""
+  pincode: ""
