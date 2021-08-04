@@ -8,7 +8,7 @@ image:
   repository: gcr.io/kob-manager/kob-pandora
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.6"
+  tag: "0.7"
 
 imagePullSecrets: []
 nameOverride: ""
